@@ -1,7 +1,7 @@
 let mySelect = document.querySelector("#select-user")
 
 function putSelectGetAllUsers() {
-    fetch("https://apichoco.adrardev.fr/user/all")
+    fetch("https://apichoco.adrardev.fr/user/all/asc")
         .then(async response => {
             if (response.status === 200) {
                 const data = await response.json()
