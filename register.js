@@ -3,23 +3,33 @@ const bt = document.querySelector('#bt');
 //zone pour afficher le résultat (erreur ou ajout de compte)
 const resultat = document.querySelector('#resultat');
 
-//Valider le bon format de mot de passe
+//----Valider le bon format de mot de passe
+//récupération de l'input du mot de passe
 const inputPassword = document.querySelector("#password");
+//on  écoute l'événement keyup sur l'input de mot de passe
 inputPassword.addEventListener("keyup", function () {
+    //récuperation de la valeur du l'input du mot de passe
     let password = document.querySelector("#password").value;
+    //récupération des paragraphes pour visualiser la validation des regex
     const nombre = document.querySelector("#nombre");
     const maj = document.querySelector("#maj");
     const min = document.querySelector("#min");
     const caract = document.querySelector("#caract");
-
+    //Regex pour vérifier qu'il y a au moins un chiffre
     let regexPasswordNombre = /^(?=.*[0-9]){1,}/;
+    //Regex pour vérifier qu'il y a au moins une lettre majuscule
     let regexPasswordMaj = /^(?=.*[A-Z]){1,}/;
+    //Regex pour vérifier qu'il y a au moins une lettre minuscule
     let regexPasswordMin = /^(?=.*[a-z]){1,}/;
+    //Regex pour vérifier qu'il y a entre 12 et 20 caractères
     let regexPasswordCaract = /^.{12,20}$/;
 
+    //Conditions pour vérifier les regex
     if (regexPasswordNombre.test(password)) {
+        //Si c'est bon le paragraphe passe en vert
         nombre.style.color = "green";
     } else {
+        //Sinon il passe en noir
         nombre.style.color = "black";
     }
 
@@ -43,15 +53,21 @@ inputPassword.addEventListener("keyup", function () {
 
 })
 
-//Vérifier que les 2 password sont identiques
+//----Vérifier que les 2 password sont identiques
+//Récupération du l'input de confirmation de mot de passe
 const inputConfirmer = document.querySelector('#confirm');
-console.log(inputConfirmer);
+//on écoute l'événement keyup sur l'input de confirmation de mot de passe
 inputConfirmer.addEventListener("keyup", function () {
+    //Récupération de la valeur de l'input du mot de passe
     let mdp = document.querySelector("#password").value;
+    //récupération de la valeur de l'input de confirmation de mot de passe
     let confirmer = document.querySelector("#confirm").value;
+    //Condition de vérification de la concordance entre les 2 valeurs des input
     if (mdp == confirmer) {
+        //Si c'est bon le background de l'input passe en vert
         inputConfirmer.style.backgroundColor = "green";
     } else if (mdp !== confirmer) {
+        //Sinon le background de l'input passe en rouge
         inputConfirmer.style.backgroundColor = "red";
     }
 
